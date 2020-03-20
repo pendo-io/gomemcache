@@ -3,6 +3,8 @@
 This is a memcache client library for the Go programming language
 (http://golang.org/).
 
+Fork of github.com/bradfitz/gomemcache/memcache
+
 ## Installing
 
 ### Using *go get*
