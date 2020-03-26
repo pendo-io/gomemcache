@@ -2,23 +2,24 @@
 
 This is a memcache client library for the Go programming language
 (http://golang.org/).
+This is a fork of github.com/bradfitz/gomemcache/memcache, 
+with support for Autodiscovery client based on https://cloud.google.com/memorystore/docs/memcached/auto-discovery-overview
 
-Fork of github.com/bradfitz/gomemcache/memcache
 
 ## Installing
 
 ### Using *go get*
 
-    $ go get github.com/bradfitz/gomemcache/memcache
+    $ go get github.com/ankitkinra/gomemcache/memcache
 
 After this command *gomemcache* is ready to use. Its source will be in:
 
-    $GOPATH/src/github.com/bradfitz/gomemcache/memcache
+    $GOPATH/src/github.com/ankitkinra/gomemcache/memcache
 
-## Example
+## Example without Autodiscovery
 
     import (
-            "github.com/bradfitz/gomemcache/memcache"
+            "github.com/ankitkinra/gomemcache/memcache"
     )
 
     func main() {
@@ -29,11 +30,29 @@ After this command *gomemcache* is ready to use. Its source will be in:
          ...
     }
 
+## Example with Autodiscovery
+
+    import (
+            "github.com/ankitkinra/gomemcache/memcache"
+    )
+
+    func main() {
+         mcDiscovery := memcache.NewDiscoveryClient("10.0.0.1:11211", 30 * time.Second)
+         mcDiscovery.Set(&memcache.Item{Key: "foo", Value: []byte("my value")})
+
+         it, err := mc.Get("foo")
+         ...
+         mcDiscovery.Stop()
+    }
+
+### Note
+Remember to call Stop() on the discovery enabled client to stop the polling, else this can leak "go" methods.
+
 ## Full docs, see:
 
-See https://godoc.org/github.com/bradfitz/gomemcache/memcache
+See https://godoc.org/github.com/ankitkinra/gomemcache/memcache
 
 Or run:
 
-    $ godoc github.com/bradfitz/gomemcache/memcache
+    $ godoc github.com/ankitkinra/gomemcache/memcache
 
