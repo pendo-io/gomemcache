@@ -2,7 +2,8 @@
 
 This is a memcache client library for the Go programming language
 (http://golang.org/).
-This is a fork of github.com/bradfitz/gomemcache/memcache, 
+
+It is a fork of https://github.com/bradfitz/gomemcache/memcache, 
 with support for Autodiscovery client based on https://cloud.google.com/memorystore/docs/memcached/auto-discovery-overview
 
 
