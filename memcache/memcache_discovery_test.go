@@ -78,7 +78,7 @@ func TestDiscoveryUnixSocket(t *testing.T) {
 		t.Fatalf("could not create discovery client due to %v", err)
 	}
 	testWithDiscoveryClient(t, &fakeDiscoveryServer, discoveryClient)
-	discoveryClient.stopPolling()
+	discoveryClient.StopPolling()
 }
 
 func waitOnChannelWithTimeout(c chan bool, timeout time.Duration) (bool, error) {
