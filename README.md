@@ -34,7 +34,7 @@ After this command *gomemcache* is ready to use. Its source will be in:
          mc.Set(&memcache.Item{Key: "foo", Value: []byte("my value")})
 
          it, _ := mc.Get("foo")
-         fmt.Println(string(it.Value))
+         fmt.Println(string(it.Value)) // Expecting "my value" to be printed
     }
 
 ## Example with Autodiscovery
@@ -57,7 +57,8 @@ After this command *gomemcache* is ready to use. Its source will be in:
          mcDiscovery.Set(&memcache.Item{Key: "foo", Value: []byte("my value")})
 
          it, _ := mcDiscovery.Get("foo")
-         fmt.Println(string(it.Value))
+         fmt.Println(string(it.Value)) // Expecting "my value" to be printed
+
          mcDiscovery.StopPolling()
     }
 
