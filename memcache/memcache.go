@@ -144,7 +144,7 @@ func newDiscoveryClient(discoveryAddress string, pollingDuration time.Duration) 
 	cfgPoller := newConfigPoller(pollingDuration, ss, mcCfgPollerHelper)
 	// cfgPoller starts polling immediately.
 	mcClient := NewFromSelector(ss)
-	mcClient.stopPolling = cfgPoller.stopPolling
+	mcClient.StopPolling = cfgPoller.stopPolling
 	return mcClient, nil
 }
 
@@ -180,7 +180,7 @@ type Client struct {
 	MaxIdleConns int
 
 	selector    ServerSelector
-	stopPolling stop
+	StopPolling stop
 
 	lk       sync.Mutex
 	freeconn map[string][]*conn
