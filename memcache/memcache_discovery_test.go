@@ -197,6 +197,7 @@ func startMemcachedServer(t *testing.T, port int, ready chan<- bool, exit <-chan
 	cmd := exec.Command("memcached", "-p", strconv.Itoa(port))
 	t.Logf("starting memcached server with command : %v", cmd)
 	if err := cmd.Start(); err != nil {
+		t.Log(err)
 		ready <- false
 		return errors.New("could not find memcached server")
 	}
